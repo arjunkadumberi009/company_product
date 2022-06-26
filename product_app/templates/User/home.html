@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comany Products</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
+    <link rel="stylesheet" type="text/css"href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css"href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+</head>
+<style>
+    th,td{
+        padding: 10px;
+    }
+    input[type=submit],input[type=reset] {
+	    height: 30px;
+        width: 100px;
+	    color: #fff;
+	    font-size: 15px;
+	    background: rgb(196, 71, 67);
+	    cursor: pointer;
+	    border-radius: 15px;
+    }
+    input[type=text],[type=number],[type=password]{
+        height: 28px;
+        width: 200px;
+        background-color: aliceblue;
+
+    }
+  
+    
+</style>
+
+<body class="bg-black muli" style="height: auto;">
+    <nav style="width: 100%;height: 70px;background-color:rgba(0, 17, 255, 0.966);">
+            <div style="width: 50%; height: 70px;float: left;padding-left: 25px;"> 
+                <div style="width: 22%;background-color:rgb(0, 0, 0); height: 70px;float: left;padding-left: 20px;"> 
+                    <img style="height: 80px" src="{% static 'images/loh.webp'%}" />
+                </div>
+                <div style="margin-left: 25%; height: 50px;text-align: left;padding-right: 30px;padding-top: 20px;">
+                    <h1>&nbsp;Mobile Products</h1>
+                </div>
+                
+            </div>
+            <div style="margin-left: 50%; height: 50px;text-align: right;padding-right: 30px;padding-top: 20px;">
+               <b> <a href="{% url 'home' %}" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Home</a>
+                <a href="#features" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Features</a>
+                <a href="#pricing" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Blogs</a>
+                <a href="{% url 'home2' %}" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Registration/Login</a></b>
+            </div>
+        </div>
+    </nav>
+
+    <div style="width: 100%;height: 470px;margin-top: 10px;margin-bottom:10px;border: 1px solid #000000";">
+        <div style="width: 100%; height: 450px;border: 1px solid #000000" > 
+            <img style="height: 450px" width="100%" src="{% static 'images/hu.png'%}" />
+                    
+        </div>
+    </div>
+               
+    <!-- footer -->
+    <div style="height: 30px;width: 100%;background-color: rgb(25, 0, 255);">
+    </div>
+</body>
+</html>

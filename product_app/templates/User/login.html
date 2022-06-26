@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shorthandcss@1.1.1/dist/shorthand.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap" />
+    <link rel="stylesheet" type="text/css"href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css"href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+</head>
+<style>
+    th,td{
+        padding: 10px;
+        width: 100px;
+    }
+    input[type=submit],input[type=reset] {
+	    height: 30px;
+        width: 100px;
+	    color: #fff;
+	    font-size: 15px;
+	    background: rgb(196, 71, 67);
+	    cursor: pointer;
+	    border-radius: 15px;
+    }
+    input[type=text],[type=number],[type=password],[type=email],[type=tel]{
+        height: 28px;
+        width: 200px;
+        background-color: aliceblue;
+
+    }
+    #p1{
+        width: 150px;
+    }
+
+</style>
+
+<body class="bg-black muli" style="height: auto;">
+    <nav style="width: 100%;height: 80px;background-color:rgb(25, 0, 255);">
+            <div style="width: 50%; height: 90px;float: left;padding-left: 25px"> 
+                <div style="width: 22%;background-color:rgb(0, 0, 0); height: 90px;float: left;padding-left: 20px;"> 
+                    <img style="height: 80px" src="{% static 'images/loh.webp'%}" />
+                </div>
+                <div style="margin-left: 25%; height: 50px;text-align: left;padding-right: 30px;padding-top: 20px;">
+                    <h1>&nbsp;Mobile Products</h1>
+                </div>
+                
+            </div>
+            <div style="margin-left: 50%; height: 50px;text-align: right;padding-right: 30px;padding-top: 26px;">
+               <b> <a href="{% url 'home' %}" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Home</a>
+                <a href="#features" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Features</a>
+                <a href="#pricing" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Blogs</a>
+                <a href="#blog" class="fs-s1 mx-3 py-3 black no-underline hover-underline">Contact Us</a></b>
+            </div>
+        </div>
+    </nav>
+
+
+    <div style="width: 100%;height: 450px;margin-top: 10px;margin-bottom:10px;border: 1px solid #000000";">
+        <div style="width: 70%; height: 420px;float: left;border: 1px solid #000000"> 
+            <!-- Register User -->
+            <div style="border: 1px solid #003cff;width: 95%;height: 430px; padding: 20px;margin: 10px;">
+                <center>
+                    {% if submitted %}
+                        <center><h1 style="color: white;"> You are Registered successfully</h1></center>
+                        <p style="color: white;">(You can Use Your User Name as Email or Phone Number to login)</p>
+                    {% else %}
+                        <form action="registration" method="POST" enctype="multipart/form-data" name="myform" novalidate >
+                            {% csrf_token %}
+                            <table style="padding: 10px;width: 95%;color: white">
+                                <tr>
+                                    <th colspan="2"><u>Register User</u></th>
+                                </tr>
+                                <tr>
+                                    <td>First Name</td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "first_name" %}
+                                                {{i}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td id="p1">
+                                        {% for i in form %}
+                                            {% if i.name == "first_name" %}
+                                                {% if form.errors %}
+                                                    {{i.errors}}
+                                                    {{form.non_field_errors}}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{msg1}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name</td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "last_name" %}
+                                                {{i}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "last_name" %}
+                                                {% if form.errors %}
+                                                    {{i.errors}}
+                                                    {{form.non_field_errors}}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{msg2}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "email" %}
+                                                {{i}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "email" %}
+                                                {% if form.errors %}
+                                                    {{i.errors}}
+                                                    {{form.non_field_errors}}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{msg3}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "phone_number" %}
+                                                {{i}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "phone_number" %}
+                                                {% if form.errors %}
+                                                    {{i.errors}}
+                                                    {{form.non_field_errors}}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{msg4}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "password" %}
+                                                {{i}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "password" %}
+                                                {% if form.errors %}
+                                                    {{i.errors}}
+                                                    {{form.non_field_errors}}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{msg5}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Confirmation Password</td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "confirm_password" %}
+                                                {{i}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for i in form %}
+                                            {% if i.name == "confirm_password" %}
+                                                {% if form.errors %}
+                                                    {{i.errors}}
+                                                    {{form.non_field_errors}}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{msg6}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 10px;text-align: center;"><input type="reset" value="Reset"></td>
+                                    <td style="height: 10px;text-align: center;"><input type="submit" value="Register"></td>
+                                    <td id="p1"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    {% endif %}
+                </center>
+            </div>
+        </div>
+            
+        <div style="margin-left: 70%;width: 30%; height: 380px;border: 1px solid #000000">
+            <!-- Login User -->
+            <div style="border: 1px solid #003cff;;width: 95%;height: 430px; padding: 20px;margin: 10px;">
+            <center>
+                <table style=" color: white;text-align:center;align-items: center;margin-top: 50px; border:1px solid #00000000;padding: 10px;width: 50px">
+                    <form method="POST" action="log" novalidate>
+                        {% csrf_token %}
+                        <tr style="height: 40px;">
+                            <th colspan="2"><b><u>Login</u></b></th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                {% for i in form1 %}
+                                    {% if i.name == "first_name" %}
+                                        {{i}}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr style="height: 50px;">
+                            <td colspan="2">
+                                {% for i in form1 %}
+                                    {% if i.name == "first_name" %}
+                                        {% if form1.errors %}
+                                            {{i.errors}}
+                                            {{form1.non_field_errors}}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                {{msg7}}
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td colspan="2">
+                                {% for i in form1 %}
+                                    {% if i.name == "password" %}
+                                        {{i}}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 50px;">
+                                {% for i in form1 %}
+                                    {% if i.name == "password" %}
+                                        {% if form1.errors %}
+                                            {{i.errors}}
+                                            {{form1.non_field_errors}}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                {{msg8}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#blog" class="fs-s1 mx-3 py-3 red no-underline hover-underline">Forgot password</a></td>
+                            <td style="height: 30px;" colspan="2"><input style="width: 150px" name="sub" type="submit" value="Login"></td>
+                        </tr>
+                        <tr>
+                            <td style="height: 45px;color: red;text-align: center;" colspan="2">{{msg10}}</td>
+                        </tr>   
+                    </form>
+                </table> 
+            </center></div>
+        </div>
+    </div>
+    <div style="height: 30px;width: 100%;background-color: rgb(25, 0, 255);">
+    </div>
+   
+</body>
+</html>
